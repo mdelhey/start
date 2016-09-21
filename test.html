@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <style>
+      button {
+      margin: 10px 0;
+      }
+
+      a {
+      text-decoration: none;
+      font-size: 1.2em;
+      margin: 5px 0;
+      color: black;
+      }
+
+      a:hover {
+      text-decoration: underline;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      //<![CDATA[
+window.onload=function(){
+
+jQuery.fn.getfavicon = function() {
+
+    return this.each(function() {
+        $('a[href^="http"]', this).each(function() {
+            var url = $(this).attr('href').replace(/(:\/\/[^\/]+).*$/, '$1') + '/favicon.ico';
+            var img = $('<img src="' + url + '" />').insertBefore($(this));
+            img.attr('height', '16').attr('width', '16').attr('alt', 'favicon').css('margin', '0 8px -3px 1px');
+
+            var testimg = new Image();
+            testimg.src = url;
+            testimg.onerror = function(evt) {
+                $('img[src="' + this.src + '"]').attr('src', 'http://www3.sandvik.com/style/i/lang-globe.png')
+            }
+            // i used a random image from the web as the fallback image
+        });
+    });
+};
+
+
+    $('.links').getfavicon();
+}//]]> 
+
+      </script>
+
+  </head>
+
+  <body>
+
+    <button id="b">Get Favicons!</button>
+    <hr />
+    <div class="links">
+      <a href="https://google.com">Google (HTTPS)</a>
+      <br />
+      <a href="http://lkdjklsfh.com">Invalid URL</a>
+      <br />
+      <a href="http://www.engadget.com/reviews/">Engadget Reviews (URL with directory)</a>
+    </div>
+
+  </body>
+</html>
+

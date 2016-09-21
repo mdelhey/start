@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+
+      .use-column {
+      columns: 300px;
+      column-gap: 30px;
+     }
+
+    .column {
+      display: block;
+    }
+    
+    .preview {
+      display: block;
+      width: 20px;
+      height: 20px;
+      z-index: -1;
+    }
+
+    ul {
+      list-style-type: none;
+      list-style: none;
+      padding-left: 10px;
+    }
+
+    ul ul {
+      padding-left: 20px;
+      padding-top: 3px;
+      padding-bottom: 3px;   
+    }
+    
+    img {
+    padding-right: 8px;
+    height: 16px;
+    width: 16px;
+    }
+
+    a {
+      margin: 5px 0;
+    }
+    
+    a:link {
+      color: #0000EE;
+    }
+
+    a:visited {
+      color: #551A8B;
+      color: #0000EE;
+    }
+
+    body {
+      font-family: helvetica;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript">
+    //<![CDATA[
+window.onload=function(){
+
+jQuery.fn.getfavicon = function() {
+
+    return this.each(function() {
+        $('a[href^="http"]', this).each(function() {
+            var url = $(this).attr('href').replace(/(:\/\/[^\/]+).*$/, '$1') + '/favicon.ico';
+            var img = $('<img src="' + url + '" />').insertBefore($(this));
+            img.attr('alt', 'favicon');
+
+            var testimg = new Image();
+            testimg.src = url;
+            testimg.onerror = function(evt) {
+                $('img[src="' + this.src + '"]').attr('src', 'http://www3.sandvik.com/style/i/lang-globe.png') // image fall-back
+//http://www.google.com/s2/favicons?domain=welp
+            }
+        });
+    });
+};
+
+
+    $('.column').getfavicon();
+}//]]> 
+  </script>
+
+  </head>
+  <body>
+    <ul class="use-column">
+
+      <li>music
+	      <ul class="column">
+          <li><a href="https://www.residentadvisor.net">resident advisor</a></li>
+	        <li><a href="https://boomkat.com">bookmat</a></li>
+          <li><a href="https://hardwax.com">hard wax</a></li>
+          <li><a href="http://www.tinymixtapes.com/">tiny mix tapes</a></li>
+	      </ul>
+      </li>
+
+      <li>magazine
+        <ul class="column">
+          <li><a href="http://www.3ammagazine.com/3am/">3am</a></li>
+          <li><a href="http://www.metamute.org">mute</a></li>
+          <li><a href="https://nplusonemag.com">n+1</a></li>
+          <li><a href="http://brooklynrail.org">brooklyn rail</a></li>
+          <li><a href="https://frieze.com">frieze</a></li>
+          <li><a href="http://www.dazeddigital.com">dazed</a></li>
+        </ul>
+      </li>
+
+      <li>art
+	      <ul class="column">
+          <li><a href="http://www.e-flux.com/journals/">e-flux</a></li>
+          <li><a href="http://rhizome.org/?ref=header">rhizome</a></li>
+          <li><a href="http://artforum.com">artforum</a></li>
+          <li><a href="http://www.artandeducation.net">arts&education</a></li>
+	      </ul>
+      </li>
+
+
+      <li>blogs
+        <ul class="column">
+          <li><a href="http://www.xenosystems.net">outside in (nick land)</a></li>
+        </ul>
+      </li>
+
+            <li>journals
+	      <ul class="column">
+          <li><a href="http://newleftreview.org">new left review</a></li>
+          <li><a href="http://www.radicalphilosophy.com">radical philosophy</a></li>
+          <li><a href="http://www.historicalmaterialism.org">historical materialism</a></li>
+          <li><a href=""></a></li>
+	      </ul>
+      </li>
+
+
+    </ul>
+  </body>
+</html>
+
